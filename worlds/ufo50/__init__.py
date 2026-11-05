@@ -286,9 +286,11 @@ class UFO50World(World):
             self.starting_games = included_game_names
         else:
             addtl_games_to_start_with = max(self.options.starting_game_amount.value - len(self.starting_games), 0)
-            self.starting_games += self.random.choices(
-                [game for game in included_game_names if game not in self.starting_games],
-                k=addtl_games_to_start_with)
+            while self.options.starting_game_amount > len(self.starting_games):
+                game = self.random.choice(included_game_names)
+                if game not in self.starting_games:
+                    self.starting_games += [game]
+                    
             for game_name in self.starting_games:
                 if game_name in ufo50_games.keys():
                     break
