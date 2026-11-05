@@ -25,8 +25,8 @@ item_table: dict[str, ItemInfo] = {
     "Progressive Sapper": ItemInfo(6, IC.progression, 2, "Units"),
     "Hero Spawning": ItemInfo(7, IC.progression, 1, "Units"),
     "Ranked Mode Access": ItemInfo(8, IC.progression, 1, "Modes"),
-    "Survival Mode Access": ItemInfo(9, IC.useful, 1, "Modes"),
-    "Extra Flag": ItemInfo(10, IC.useful, 5, "Bonus"),
+    "Survival Mode Access": ItemInfo(9, IC.progression, 1, "Modes"),
+    "Extra Flag": ItemInfo(10, IC.progression, 5, "Bonus"),
     "+10% Extra Units": ItemInfo(11, IC.useful, 10, "Bonus"),
     "+5 Ranked Win Bonus": ItemInfo(12, IC.filler, 0, "Bonus"),
 }

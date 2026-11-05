@@ -33,7 +33,7 @@ location_table: dict[str, LocationInfo] = {
     "Ready Or Not": LocationInfo(14, "Levels 13, 14"),
     "Stand Back": LocationInfo(15, "Levels 10, 15"),
     "Blast Damage": LocationInfo(16, "Levels 16"),
-    "Guerrila Warfare": LocationInfo(17, "Levels 17"),
+    "Guerrilla Warfare": LocationInfo(17, "Levels 17"),
     "Rally The Troops": LocationInfo(18, "Levels 18, 19, 23"),
     "Traffic Jam": LocationInfo(19, "Levels 18, 19, 23"),
     "Acts of Heroism": LocationInfo(20, "Levels 20"),
@@ -75,7 +75,7 @@ location_table: dict[str, LocationInfo] = {
     # For the sake of simplicity we are assuming beating a level without having all the required units is 'out of logic' since it is harder than the vanilla game.
     "Garden": LocationInfo(997, "Levels 10, 15"), # You can beat 12 levels with just Grunt, Archer, Shield, Spear, and Cavalry. This is the lowest amount of units you can beat 12 levels with assuming the rule above.
     "Gold": LocationInfo(998, "Levels 24"), # If Level 24 is in-logic, then the rest must also be since Level 24 includes every unit in the game.
-    "Cherry": LocationInfo(999, "Campaign + Ranked")
+    "Cherry": LocationInfo(999, "Levels 24")
 }
 
 

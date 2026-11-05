@@ -20,8 +20,6 @@ regions: list[str] = [
     "Ranked Mode", # the ranked mode
     "Survival Mode", # the survival mode
 
-    "Campaign + Ranked", # used for the Cherry Condition
-
     # Campaign Mode Regions
     # Each of these regions features a unqiue set of units: 
     "Levels 1, 21", # Grunt only

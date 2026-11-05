@@ -17,8 +17,8 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     sapper = "Attactics - Progressive Sapper"
     hero = "Attactics - Hero Spawning"
 
-    ranked = "Attactics - Ranked Mode"
-    survival = "Attactics - Survival Mode"
+    ranked = "Attactics - Ranked Mode Access"
+    survival = "Attactics - Survival Mode Access"
 
     player = world.player
 
@@ -75,13 +75,19 @@ def create_rules(world: "UFO50World", regions: dict[str, Region]) -> None:
     regions["Campaign Mode"].connect(regions["Levels 22"], rule=lambda state: state.has_all(level_units[2], player))
     regions["Campaign Mode"].connect(regions["Levels 24"], rule=lambda state: state.has_all(level_units[23], player))
 
-    regions["Levels 24"].connect(regions["Campaign + Ranked"], rule=lambda state: state.can_reach_region("Attactics - Ranked Mid", player))
-
-
     regions["Ranked Mode"].connect(regions["Ranked Early"], rule=lambda state: state.has_group("Attactics - Units", player, 4))
-    regions["Ranked Mode"].connect(regions["Ranked Mid"], rule=lambda state: state.has_group("Attactics - Units", player, 7))
-    regions["Ranked Mode"].connect(regions["Ranked Late"], rule=lambda state: state.has_group("Attactics - Units", player, 12))
+    regions["Ranked Early"].connect(regions["Ranked Mid"], rule=lambda state: state.has_group("Attactics - Units", player, 7))
+    regions["Ranked Mid"].connect(regions["Ranked Late"], rule=lambda state: state.has_group("Attactics - Units", player, 12))
 
     regions["Survival Mode"].connect(regions["Survival Early"], rule=lambda state:  state.has_group("Attactics - Units", player, 4))
-    regions["Survival Mode"].connect(regions["Survival Mid"], rule=lambda state: state.has_group("Attactics - Units", player, 7))
-    regions["Survival Mode"].connect(regions["Survival Late"], rule=lambda state: state.has_group("Attactics - Units", player, 12))
+    regions["Survival Early"].connect(regions["Survival Mid"], rule=lambda state: state.has_group("Attactics - Units", player, 7))
+    regions["Survival Mid"].connect(regions["Survival Late"], rule=lambda state: state.has_group("Attactics - Units", player, 12))
+
+    set_rule(world.get_location("Attactics - Garden"), rule=lambda state: state.can_reach_location("Attactics - So It Goes", player))
+
+    set_rule(world.get_location("Attactics - Gold"),
+             rule=lambda state: state.can_reach_location("Attactics - The Final Battle", player))
+
+    if "Attactics" in world.options.cherry_allowed_games:
+        set_rule(world.get_location("Attactics - Cherry"),
+                 rule=lambda state: state.can_reach_location("Attactics - Gold", player) and state.can_reach_location("Attactics - Lord Rank", player))
