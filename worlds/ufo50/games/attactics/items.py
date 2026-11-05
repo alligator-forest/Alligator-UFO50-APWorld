@@ -16,14 +16,14 @@ class ItemInfo(NamedTuple):
 
 # 2 Progressive Units: 1st instance gives the ability to spawn that unit, the 2nd gives the ability to promote that unit
 item_table: dict[str, ItemInfo] = {
-    "Progressive Grunt": ItemInfo(0, IC.useful, 1, "Units"),
+    "Progressive Grunt": ItemInfo(0, IC.progression, 1, "Units"),
     "Progressive Archer": ItemInfo(1, IC.progression, 2, "Units"),
     "Progressive Shieldman": ItemInfo(2, IC.progression, 2, "Units"),
     "Progressive Cavalry": ItemInfo(3, IC.progression, 2, "Units"),
     "Progressive Spearman": ItemInfo(4, IC.progression, 2, "Units"),
-    "Progressive Assassin": ItemInfo(5, IC.useful, 2, "Units"),
-    "Progressive Sapper": ItemInfo(6, IC.useful, 2, "Units"),
-    "Hero Spawning": ItemInfo(7, IC.useful, 1, "Units"),
+    "Progressive Assassin": ItemInfo(5, IC.progression, 2, "Units"),
+    "Progressive Sapper": ItemInfo(6, IC.progression, 2, "Units"),
+    "Hero Spawning": ItemInfo(7, IC.progression, 1, "Units"),
     "Ranked Mode Access": ItemInfo(8, IC.progression, 1, "Modes"),
     "Survival Mode Access": ItemInfo(9, IC.useful, 1, "Modes"),
     "Extra Flag": ItemInfo(10, IC.useful, 5, "Bonus"),
@@ -42,6 +42,30 @@ def get_items() -> dict[str, int]:
 def get_item_groups() -> dict[str, set[str]]:
     item_groups: dict[str, set[str]] = {"Attactics": {
         f"Attactics - {item_name}" for item_name in item_table.keys()}}
+    item_groups.update({
+        "Attactics - Units": {
+            "Attactics - Progressive Grunt",
+            "Attactics - Progressive Archer",
+            "Attactics - Progressive Shieldman",
+            "Attactics - Progressive Spearman",
+            "Attactics - Progressive Cavalry",
+            "Attactics - Progressive Assassin",
+            "Attactics - Progressive Sapper",
+            "Attactics - Hero Spawning"
+        },
+        "Attactics - Modes": {
+            "Attactics - Ranked Mode Access",
+            "Attactics - Survival Mode Access"
+        },
+        "Attactics - Bonus": {
+            "Attactics - Extra Flag",
+            "Attactics - +10% Extra Units",
+            "Attactics - +5 Ranked Win Bonus"
+        }
+
+    })
+
+
     return item_groups
 
 
@@ -71,4 +95,4 @@ def create_items(world: "UFO50World") -> list[Item]:
 
 
 def get_filler_item_name(world: "UFO50World") -> str:
-    return "Attactics - +10 Ranked Win Bonus"
+    return "Attactics - +5 Ranked Win Bonus"

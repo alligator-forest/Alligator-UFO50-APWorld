@@ -35,7 +35,7 @@ regions: list[str] = [
     "Levels 12", # Spear + Cavalry
     "Levels 13, 14", # All units except Sapper + Hero
     "Levels 16", # Sapper + Shield + Spear + Cavalry
-    "Levels 17", # Assassin + Cavalry + Spear + Grunt
+    "Levels 17", # Assassin + Cavalry + Sapper + Grunt
     "Levels 18, 19, 23", # All units except Hero
     "Levels 20", # Shield + Assassin + Archer + Hero
     "Levels 22", # Sapper + Archer
